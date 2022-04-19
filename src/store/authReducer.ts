@@ -8,7 +8,7 @@ export type InitialState = {
 }
 
 const initialState: InitialState = {
-  isAuth: true,
+  isAuth: false,
   email: null,
   token: null,
   id: null
