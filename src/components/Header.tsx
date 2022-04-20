@@ -23,8 +23,8 @@ const Header: FC<PropTypes> = ({ title }) => {
   return (
     <nav>
       <div className="nav-wrapper pink darken-3 px1">
-        <div className="brand-logo">Personal account application</div>
-        <ul className="right hide-on-med-and-down">
+        <div className="logo">Personal account application</div>
+        <ul className="headers">
           <li>{title}</li>
           {isAuth ? (
             <li>
