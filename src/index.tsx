@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/index";
 import "./firebase";
@@ -16,9 +16,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
-        <Routes>
-          <Route path="/" element={<App />}></Route>
-        </Routes>
+        <App />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

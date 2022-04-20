@@ -1,11 +1,13 @@
 import React from "react";
-import Form from "./Form";
+import Form from "../components/Form";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setUser } from "../store/authReducer";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const nav = useNavigate();
 
   const handleLogin = (email: string, password: string) => {
     const auth = getAuth();
@@ -19,9 +21,9 @@ const Login = () => {
             id: user.uid,
           })
         );
+        nav("/contacts");
       })
       .catch((e) => {
-        console.log(e.message);
         alert("Incorrect email or password. Try again");
       });
   };

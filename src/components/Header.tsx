@@ -1,6 +1,7 @@
 import React from "react";
 import { FC } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { RootState } from "../store";
 import { removeUser } from "../store/authReducer";
 
@@ -10,7 +11,14 @@ type PropTypes = {
 
 const Header: FC<PropTypes> = ({ title }) => {
   const dispatch = useDispatch();
+  const nav = useNavigate();
+
   const { isAuth } = useSelector((state: RootState) => state.authSlice);
+
+  const logOutHandler = () => {
+    dispatch(removeUser());
+    nav("/");
+  };
 
   return (
     <nav>
@@ -20,7 +28,7 @@ const Header: FC<PropTypes> = ({ title }) => {
           <li>{title}</li>
           {isAuth ? (
             <li>
-              <button type="button" onClick={() => dispatch(removeUser())}>
+              <button type="button" onClick={logOutHandler}>
                 Log out
               </button>
             </li>

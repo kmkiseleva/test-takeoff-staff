@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store";
-import Contact from "./Contact";
+import Contact from "../components/Contact";
 import { addUser } from "../store/contactsReducer";
 
 const Contacts = () => {
@@ -30,14 +30,18 @@ const Contacts = () => {
 
   const onSubmitDataHandler = (e: any): void => {
     e.preventDefault();
-    dispatch(
-      addUser({
-        name,
-        surname,
-        number,
-      })
-    );
-    resetForm();
+    if (name && surname && number) {
+      dispatch(
+        addUser({
+          name,
+          surname,
+          number,
+        })
+      );
+      resetForm();
+    } else {
+      alert("Enter data...");
+    }
   };
 
   return (
