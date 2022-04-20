@@ -119,9 +119,9 @@ const Contacts = () => {
           items
             .filter(
               (item) =>
-                item.name.includes(filter) ||
-                item.surname.includes(filter) ||
-                item.number.includes(filter)
+                item.name.toLowerCase().includes(filter.toLowerCase()) ||
+                item.surname.toLowerCase().includes(filter.toLowerCase()) ||
+                item.number.toLowerCase().includes(filter.toLowerCase())
             )
             .map((item) => <Contact item={item} key={item.id} />)}
       </div>
